@@ -4,6 +4,7 @@ docker run -d -p 80:80 -p 443:443 \
     -v /etc/nginx/vhost.d \
     -v /usr/share/nginx/html \
     -v /var/run/docker.sock:/tmp/docker.sock:ro \
+    --restart=always \
     jwilder/nginx-proxy
 
 
@@ -11,4 +12,5 @@ docker run -d \
     -v /home/bsternth/dev/certs:/etc/nginx/certs:rw \
     --volumes-from nginx-proxy \
     -v /var/run/docker.sock:/var/run/docker.sock:ro \
+    --restart=always \
     jrcs/letsencrypt-nginx-proxy-companion
